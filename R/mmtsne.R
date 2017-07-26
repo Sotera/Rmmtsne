@@ -102,7 +102,7 @@ mmtsneP <- function(P, no_maps, no_dims=2, max_iter=500, momentum=0.5, final_mom
     QZ <- matrix(eps, nrow=n, ncol=n) ## n x n
     for(m in 1:no_maps)
     {
-      QQ[,,m] <- (sum(proportions[,m] * proportions[,m])) * num[,,m] ## n x n
+      QQ[,,m] <- (proportions[,m] %*% t(proportions[,m])) * num[,,m] ## n x n
       QZ <- QZ + QQ[,,m] ## n x n
     }
     Z <- sum(QZ) ## 1 x 1
